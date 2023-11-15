@@ -77,6 +77,7 @@ public class ImmutableSetTests {
         assert !strings.contains("asdf");
         assert strings.contains("three");
         assert !strings.isEmpty();
+        assert !strings.containsRaw(1);
     }
 
     @Test

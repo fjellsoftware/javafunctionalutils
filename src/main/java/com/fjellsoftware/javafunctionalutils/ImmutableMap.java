@@ -164,8 +164,19 @@ public class ImmutableMap<K, V> {
      * @return true if the supplied key is present
      * @throws NullPointerException if the key is null
      */
+    public boolean containsKey(@NotNull K key){
+        Objects.requireNonNull(key);
+        return data.containsKey(key);
+    }
+
+    /**
+     * Returns true if this ImmutableMap contains the key supplied.
+     * @param key The key whose presence in this ImmutableMap is to be tested
+     * @return true if the supplied key is present
+     * @throws NullPointerException if the key is null
+     */
     @SuppressWarnings("SuspiciousMethodCalls")
-    public boolean containsKey(@NotNull Object key){
+    public boolean containsKeyRaw(@NotNull Object key){
         Objects.requireNonNull(key);
         return data.containsKey(key);
     }
@@ -176,8 +187,19 @@ public class ImmutableMap<K, V> {
      * @return true if the supplied value is present
      * @throws NullPointerException if the value is null
      */
+    public boolean containsValue(@NotNull V value){
+        Objects.requireNonNull(value);
+        return data.containsValue(value);
+    }
+
+    /**
+     * Returns true if this ImmutableMap contains the value supplied.
+     * @param value The value whose presence in this ImmutableMap is to be tested
+     * @return true if the supplied value is present
+     * @throws NullPointerException if the value is null
+     */
     @SuppressWarnings("SuspiciousMethodCalls")
-    public boolean containsValue(@NotNull Object value){
+    public boolean containsValueRaw(@NotNull Object value){
         Objects.requireNonNull(value);
         return data.containsValue(value);
     }
@@ -188,8 +210,19 @@ public class ImmutableMap<K, V> {
      * @param key the key whose presence in this ImmutableMap is to be tested
      * @return Some(value) if the key is present, otherwise None
      */
+    public @NotNull Opt<V> get(@NotNull K key){
+        Objects.requireNonNull(key);
+        return Opt.ofNullable(data.get(key));
+    }
+
+    /**
+     * If the supplied key is present in this ImmutableMap, this method returns the value that it maps to, wrapped in
+     * Some. Otherwise, it returns None.
+     * @param key the key whose presence in this ImmutableMap is to be tested
+     * @return Some(value) if the key is present, otherwise None
+     */
     @SuppressWarnings("SuspiciousMethodCalls")
-    public @NotNull Opt<V> get(@NotNull Object key){
+    public @NotNull Opt<V> getRaw(@NotNull Object key){
         Objects.requireNonNull(key);
         return Opt.ofNullable(data.get(key));
     }

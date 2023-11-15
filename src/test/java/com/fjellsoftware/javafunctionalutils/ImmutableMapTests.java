@@ -65,6 +65,8 @@ public class ImmutableMapTests {
         assert tuples.get("one").getOrThrow().equals(1);
         assert tuples.get("two").getOrThrow().equals(2);
         assert !tuples.get("three").isPresent();
+        assert tuples.getRaw("one").getOrThrow().equals(1);
+        assert !tuples.getRaw("four").isPresent();
     }
 
     @Test
@@ -93,9 +95,11 @@ public class ImmutableMapTests {
 
         assert tuples.containsKey("one");
         assert !tuples.containsKey("three");
+        assert !tuples.containsKeyRaw(1);
 
         assert tuples.containsValue(2);
         assert !tuples.containsValue(3);
+        assert !tuples.containsValueRaw("three");
 
         ImmutableSet<String> strings = tuples.keySet();
         assert strings.size()==2;

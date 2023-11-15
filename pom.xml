@@ -6,7 +6,7 @@
 
     <groupId>com.fjellsoftware.javafunctionalutils</groupId>
     <artifactId>javafunctionalutils</artifactId>
-    <version>1.0</version>
+    <version>2.0</version>
     <name>javafunctionalutils</name>
     <description>javafunctionalutils is a library containing various utilities for functional programming in java.</description>
     <url>https://github.com/fjellsoftware/javafunctionalutils</url>

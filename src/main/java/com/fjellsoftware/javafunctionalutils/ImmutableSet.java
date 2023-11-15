@@ -153,6 +153,18 @@ public class ImmutableSet<E> implements Iterable<E> {
         return data.isEmpty();
     }
 
+
+    /**
+     * Returns true if this ImmutableSet contains the element supplied.
+     * @param e The element whose presence in this ImmutableSet is to be tested
+     * @return true if the supplied element is present
+     * @throws NullPointerException if the element is null
+     */
+    public boolean contains(@NotNull E e){
+        Objects.requireNonNull(e);
+        return data.containsKey(e);
+    }
+
     /**
      * Returns true if this ImmutableSet contains the element supplied.
      * @param o The element whose presence in this ImmutableSet is to be tested
@@ -160,7 +172,7 @@ public class ImmutableSet<E> implements Iterable<E> {
      * @throws NullPointerException if the element is null
      */
     @SuppressWarnings("SuspiciousMethodCalls")
-    public boolean contains(@NotNull Object o){
+    public boolean containsRaw(@NotNull Object o){
         Objects.requireNonNull(o);
         return data.containsKey(o);
     }
