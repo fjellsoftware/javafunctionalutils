@@ -65,6 +65,6 @@ _**Java 17+** maven artifact:_
 <dependency>
     <groupId>com.fjellsoftware.javafunctionalutils</groupId>
     <artifactId>javafunctionalutils</artifactId>
-    <version>1.0</version>
+    <version>2.0</version>
 </dependency>
 ```
