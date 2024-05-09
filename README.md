@@ -10,52 +10,27 @@ Here is an example of what the code might look like when using Opt from this lib
 library's Optional:
 
 ```java
-public class OptDemonstration {
-    public void demonstrateOpt() {
-        Optional<String> optionalString = optionalString();
 
-        // Alternative 1, use unsafe method get() / orElseThrow()
-        if (optionalString.isEmpty()) {
-            System.out.println("No string");
-        } else {
-            // this method may throw, but will not here
-            String string = optionalString.orElseThrow();
-            System.out.println("Found string: " + string);
-        }
+public void typeSafeOptional() {
+    Opt<String> optString = random.nextBoolean() ? Opt.of("test") : Opt.empty();
 
-        // Alternative 2 use functional interfaces
-        optionalString.ifPresentOrElse((string) -> {
-            System.out.println("Found string: " + string);
-        }, () -> {
+    // Pattern matching using java 21+ or early access feature in java 17
+    switch (optString) {
+        case None<String> none -> 
             System.out.println("No string");
-        });
-
-        // Meanwhile Opt is compile-time safe and does not rely on 
-        // functional interfaces which are harder to read/write/debug
-        Opt<String> optString = optString();
-        if (!(optString instanceof Some<String> some)) {
-            System.out.println("No string");
-        } else {
+        case Some<String> some -> 
             System.out.println("Found string: " + some.value());
-        }
     }
 
-    private final ThreadLocalRandom random = ThreadLocalRandom.current();
-
-    private Optional<String> optionalString() {
-        if (random.nextBoolean()) {
-            return Optional.of("Hello");
-        }
-        return Optional.empty();
-    }
-
-    private Opt<String> optString() {
-        if (random.nextBoolean()) {
-            return Opt.of("Hello");
-        }
-        return Opt.empty();
+    // Alternatively use instanceof
+    Opt<String> optString = optString();
+    if (!(optString instanceof Some<String> some)) {
+        System.out.println("No string");
+    } else {
+        System.out.println("Found string: " + some.value());
     }
 }
+
 ```
 
 ## Artifacts
