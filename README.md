@@ -6,8 +6,7 @@ The main goal is to provide a small set of the most useful concepts enabled by t
 in java version 17, as well as providing some immutable data structures with a signature that reflects their 
 immutability.
 
-Here is an example of what the code might look like when using Opt from this library instead of the java standard 
-library's Optional:
+Here is an example of what the code might look like when using Opt from this library:
 
 ```java
 
